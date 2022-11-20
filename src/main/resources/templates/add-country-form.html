@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Countries</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Add New Country</h1>
+    <hr/>
+    <form th:action="@{/api/v1.0/country/createNewCountry}" th:object=${country} method="POST">
+        <input type="hidden" th:field="*{countryId}" />
+        <input type="text" th:field="*{name}" placeholder="Enter name" required class="form-control col-4 mb-4"/>
+        <input type="text" maxlength="3" th:field="*{isoCode}" placeholder="Enter ISO code" required class="form-control col-4 mb-4"/>
+        <input type="number" value="" min="1" max="1000" th:field="*{countryCode}" placeholder="Enter prefix" required class="form-control col-4 mb-4"/>
+        <button class="btn-primary" type="submit">Save</button>
+    </form>
+    <hr/>
+</div>
+</body>
+</html>
